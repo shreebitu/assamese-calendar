@@ -16,8 +16,8 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
 </head>
 
 <body>
@@ -25,23 +25,28 @@
   <div class="app-wrapper">
     <!-- Left Navigation Sidebar -->
     <aside class="left-nav">
-      <div class="brand">
+      <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;"><div class="brand">
         <div class="logo-icon">
-          <img src="assets/images/favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
+          <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
         </div>
         <div class="brand-text">
           <span class="brand-title" data-i18n="app.title_pt1">অসমীয়া</span>
           <span class="brand-subtitle" data-i18n="app.title_pt2">কেলেণ্ডাৰ</span>
         </div>
       </div>
+      </a>
 
       <div class="nav-menu">
         <div class="nav-label" data-i18n="nav.menu">MENU</div>
-        <a href="calendar.html" class="nav-item w-full">
+        <a href="../" class="nav-item w-full">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span>Home</span>
+        </a>
+        <a href="../calendar/" class="nav-item w-full">
           <i data-lucide="calendar" class="w-5 h-5"></i>
           <span data-i18n="nav.calendar">কেলেণ্ডাৰ</span>
         </a>
-        <a href="translator.html" class="nav-item w-full">
+        <a href="../translator/" class="nav-item w-full">
           <i data-lucide="languages" class="w-5 h-5"></i>
           <span data-i18n="nav.translator">Assamese Translator</span>
         </a>
@@ -72,7 +77,7 @@
             </h1>
           </div>
           <div class="header-actions">
-            <a href="index.html" class="btn btn-outline hover-elevate flex items-center gap-2">
+            <a href="../" class="btn btn-outline hover-elevate flex items-center gap-2">
               <i data-lucide="calendar" class="w-5 h-5"></i>
               <span data-i18n="nav.calendar">Calendar</span>
             </a>
@@ -186,7 +191,7 @@
   <div id="toast-container" class="toast-container fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
   </div>
 
-  <script src="assets/js/script.js"></script>
+  <script src="../assets/js/script.js"></script>
 </body>
 
 </html>

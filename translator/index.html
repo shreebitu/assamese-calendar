@@ -15,12 +15,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icons -->
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
 
     <!-- Global App CSS (from Calendar) -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
     <!-- Translator CSS -->
-    <link rel="stylesheet" href="assets/css/translator.css" />
+    <link rel="stylesheet" href="../assets/css/translator.css" />
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -81,7 +81,7 @@
     <div class="app-wrapper">
         <!-- Left Navigation Sidebar -->
         <aside class="left-nav">
-            <div class="brand">
+            <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;"><div class="brand">
                 <div class="bg-primary/10 p-2 rounded-xl flex items-center justify-center"
                     style="width: 2.5rem; height: 2.5rem;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -103,11 +103,15 @@
 
             <div class="nav-menu">
                 <div class="nav-label" data-i18n="nav.menu">MENU</div>
-                <a href="translator.html" class="nav-item active w-full">
+        <a href="../" class="nav-item w-full">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span>Home</span>
+        </a>
+                <a href="../translator/" class="nav-item active w-full">
                     <i data-lucide="languages" class="w-5 h-5"></i>
                     <span data-i18n="nav.translator">Assamese Translator</span>
                 </a>
-                <a href="calendar.html" class="nav-item w-full">
+                <a href="../calendar/" class="nav-item w-full">
                     <i data-lucide="calendar" class="w-5 h-5"></i>
                     <span data-i18n="nav.calendar">কেলেণ্ডাৰ</span>
                 </a>
@@ -324,8 +328,8 @@
         class="toast-container fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <!-- Scripts -->
-    <script src="assets/js/script.js"></script>
-    <script src="assets/js/translator.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/translator.js"></script>
 </body>
 
 </html>
