@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Axomiya Calendar</title>
+  <!-- Fonts matching original app -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Tiro+Bangla:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- App Layout Wrapper -->
+  <div class="app-wrapper">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-nav">
+      <div class="brand">
+        <div class="logo-icon">
+          <img src="favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
+        </div>
+        <div class="brand-text">
+          <span class="brand-title" data-i18n="app.title_pt1">অসমীয়া</span>
+          <span class="brand-subtitle" data-i18n="app.title_pt2">কেলেণ্ডাৰ</span>
+        </div>
+      </div>
+
+      <div class="nav-menu">
+        <div class="nav-label" data-i18n="nav.menu">MENU</div>
+        <a href="calendar.html" class="nav-item w-full">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          <span data-i18n="nav.calendar">কেলেণ্ডাৰ</span>
+        </a>
+        <a href="assamese-translator.html" class="nav-item w-full">
+          <i data-lucide="languages" class="w-5 h-5"></i>
+          <span data-i18n="nav.translator">Assamese Translator</span>
+        </a>
+      </div>
+
+      <div class="nav-footer">
+        <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+          <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+        </button>
+        <button id="lang-toggle-btn" class="lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+          <i data-lucide="languages" class="w-4 h-4"></i>
+          <span id="lang-text" class="text-sm font-semibold">EN</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Scroll Area -->
+    <div class="content-scroll">
+      <!-- Events Page Layout -->
+      <main class="events-layout">
+        <header class="header-action-card fade-in">
+          <div class="header-content">
+            <h1 class="events-title font-display flex items-center gap-2">
+              <span data-i18n="nav.events">My Events</span>
+              <span class="text-muted-foreground font-normal" style="font-size: 0.6em; margin-top: 0.2rem;">(মোৰ
+                অনুষ্ঠানবোৰ)</span>
+            </h1>
+          </div>
+          <div class="header-actions">
+            <a href="index.html" class="btn btn-outline hover-elevate flex items-center gap-2">
+              <i data-lucide="calendar" class="w-5 h-5"></i>
+              <span data-i18n="nav.calendar">Calendar</span>
+            </a>
+            <button id="add-event-btn-events" class="btn btn-primary hover-elevate items-center gap-2 shadow-md">
+              <i data-lucide="plus" class="w-5 h-5"></i>
+              <span data-i18n="btn.add_event">Add Event</span>
+            </button>
+          </div>
+        </header>
+
+        <div>
+          <section>
+            <h2 class="section-title">
+              <span class="dot-primary"></span>
+              <span data-i18n="lbl.upcoming">Upcoming</span>
+            </h2>
+
+            <div id="events-page-grid" class="events-grid">
+              <!-- Events Populated by Script -->
+            </div>
+
+            <div id="events-empty-state" class="empty-state hidden">
+              <i data-lucide="calendar-x" class="w-12 h-12 mb-4 opacity-50"></i>
+              <p data-i18n="lbl.no_events">No events found</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Event Dialog / Modal -->
+  <div id="event-dialog" class="dialog-overlay hidden">
+    <div class="dialog-content card zoom-in shadow-xl">
+      <div class="dialog-header">
+        <h2 id="dialog-title" class="dialog-title text-xl" data-i18n="btn.add_event">Add Event</h2>
+        <button id="dialog-close-btn" class="icon-button dialog-close" title="Close">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <form id="event-form" class="space-y-4 py-4">
+        <input type="hidden" id="event-id" />
+
+        <div class="form-group">
+          <label for="event-title" data-i18n="form.title">Event Title</label>
+          <input type="text" id="event-title" class="input flex-1" placeholder="Event name..." required />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="form-group">
+            <label for="event-date" data-i18n="form.date">Date</label>
+            <div class="input-icon-wrapper">
+              <i data-lucide="calendar" class="input-icon w-4 h-4"></i>
+              <input type="date" id="event-date" class="input input-with-icon" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="event-time" data-i18n="form.time">Time</label>
+            <div class="input-icon-wrapper">
+              <i data-lucide="clock" class="input-icon w-4 h-4"></i>
+              <input type="time" id="event-time" class="input input-with-icon" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="event-category" data-i18n="form.category">Category</label>
+          <select id="event-category" class="input">
+            <option value="other">📝 Other</option>
+            <option value="festival">🎉 Festival</option>
+            <option value="meeting">👥 Meeting</option>
+            <option value="birthday">🎂 Birthday</option>
+            <option value="task">✅ Task</option>
+            <option value="reminder">🔔 Reminder</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="event-desc" data-i18n="form.desc">Description</label>
+          <textarea id="event-desc" class="input textarea" placeholder="Add details..."></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 py-2">
+          <label class="switch">
+            <input type="checkbox" id="event-notify">
+            <span class="slider round"></span>
+          </label>
+          <label for="event-notify" class="flex items-center gap-2 cursor-pointer font-medium text-sm">
+            <i data-lucide="bell" class="w-4 h-4 text-primary"></i>
+            <span data-i18n="form.notify">Enable Notifications</span>
+          </label>
+        </div>
+
+        <div class="dialog-footer flex justify-between">
+          <button type="button" id="btn-delete-event" class="btn btn-destructive btn-icon hover-elevate hidden">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+          <div class="flex gap-2 w-full justify-end">
+            <button type="button" id="btn-cancel-event" class="btn btn-outline hover-elevate"
+              data-i18n="btn.cancel">Cancel</button>
+            <button type="submit" id="btn-save-event" class="btn btn-primary hover-elevate font-semibold"
+              data-i18n="btn.save">Save</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
