@@ -25,15 +25,17 @@
   <div class="app-wrapper">
     <!-- Left Navigation Sidebar -->
     <aside class="left-nav">
-      <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;"><div class="brand">
-        <div class="logo-icon">
-          <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
+      <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;">
+        <div class="brand">
+          <div class="logo-icon">
+            <img src="../assets/images/favicon.svg" alt="App Logo"
+              style="width: 60%; height: 60%; object-fit: contain;" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title" data-i18n="app.title_pt1">অসমীয়া</span>
+            <span class="brand-subtitle" data-i18n="app.title_pt2">কেলেণ্ডাৰ</span>
+          </div>
         </div>
-        <div class="brand-text">
-          <span class="brand-title" data-i18n="app.title_pt1">অসমীয়া</span>
-          <span class="brand-subtitle" data-i18n="app.title_pt2">কেলেণ্ডাৰ</span>
-        </div>
-      </div>
       </a>
 
       <div class="nav-menu">
@@ -70,25 +72,7 @@
       <div class="dashboard-layout">
         <!-- Main Content Area -->
         <div class="main-content">
-          <!-- Dashboard Header -->
-          <header class="header-action-card fade-in">
-            <div class="header-content">
-              <h1 class="main-title flex flex-wrap items-center gap-2">
-                <span data-i18n="app.title">Assamese Calendar</span>
-              </h1>
-            </div>
-            <div class="header-actions">
-              <a href="../events/" class="btn btn-outline hover-elevate flex items-center gap-2">
-                <i data-lucide="list" class="w-5 h-5"></i>
-                <span data-i18n="nav.events">My Events</span>
-              </a>
-              <button id="add-event-btn" class="btn btn-primary hover-elevate items-center gap-2 shadow-md">
-                <i data-lucide="plus" class="w-5 h-5"></i>
-                <span data-i18n="btn.add_event">Add Event</span>
-              </button>
-            </div>
-          </header>
-
+          <!-- Dashboard Header block removed based on request -->
           <!-- Today Info Card -->
           <div class="today-card fade-in zoom-in group">
             <div class="today-card-bg"></div>
@@ -105,7 +89,20 @@
                   </div>
                 </div>
               </div>
-              <div class="today-card-badge shadow-sm" id="today-weekday">...</div>
+              <div class="today-card-badge shadow-sm text-center" id="today-weekday" style="font-size: 20px; font-weight: 700; padding: 0.25rem 1rem;">...</div>
+            </div>
+          </div>
+
+          <!-- Separate Today Festival Card -->
+          <div class="card p-5 fade-in zoom-in group" id="today-festival-wrapper" style="display: none; border: 1px solid rgba(245, 158, 11, 0.3); background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.01) 100%); margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.06);">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+              <div class="flex items-center justify-center flex-shrink-0" style="background: rgba(245, 158, 11, 0.12); padding: 0.75rem; border-radius: 12px; box-shadow: inset 0 0 10px rgba(245, 158, 11, 0.1);">
+                <i data-lucide="sparkles" class="w-6 h-6" style="color: #f59e0b;"></i>
+              </div>
+              <div class="flex flex-col text-center sm:text-left pt-1">
+                <span style="font-size: 0.95rem; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;">আজিৰ বিশেষ দিন</span>
+                <span id="Sig" style="font-family: 'Tiro Bangla', serif; font-size: 1.4rem; color: var(--foreground); font-weight: 800; line-height: 1.3;"></span>
+              </div>
             </div>
           </div>
 
@@ -255,6 +252,15 @@
       class="toast-container fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
     <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/today-feature.js"></script>
+    <script>
+      // Show festival wrapper if text is populated
+      const sigElement = document.getElementById('Sig');
+      const festWrapper = document.getElementById('today-festival-wrapper');
+      if (sigElement && sigElement.innerHTML.trim() !== "") {
+        festWrapper.style.display = 'block';
+      }
+    </script>
 </body>
 
 </html>

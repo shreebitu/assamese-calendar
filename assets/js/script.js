@@ -511,10 +511,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (nextBtn) nextBtn.addEventListener('click', () => { state.currentDate.setMonth(state.currentDate.getMonth() + 1); renderCalendarGrid(); });
 
   // Dialog Listeners
-  document.getElementById('dialog-close-btn').addEventListener('click', closeEventDialog);
-  document.getElementById('btn-cancel-event').addEventListener('click', closeEventDialog);
+  const dialogCloseBtn = document.getElementById('dialog-close-btn');
+  if (dialogCloseBtn) dialogCloseBtn.addEventListener('click', closeEventDialog);
+  const cancelEventBtn = document.getElementById('btn-cancel-event');
+  if (cancelEventBtn) cancelEventBtn.addEventListener('click', closeEventDialog);
 
-  document.getElementById('event-form').addEventListener('submit', (e) => {
+  const eventForm = document.getElementById('event-form');
+  if (eventForm) eventForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const data = {
       title: document.getElementById('event-title').value,
@@ -541,7 +544,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof renderEventsPageGrid === 'function') renderEventsPageGrid();
   });
 
-  document.getElementById('btn-delete-event').addEventListener('click', () => {
+  const deleteEventBtn = document.getElementById('btn-delete-event');
+  if (deleteEventBtn) deleteEventBtn.addEventListener('click', () => {
     if (state.editingEventId) {
       DB.delete(state.editingEventId);
       closeEventDialog();
