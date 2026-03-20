@@ -31,25 +31,54 @@ function toAssameseNumeral(num) {
 }
 
 function getAssameseDateApprox(date) {
-  const month = date.getMonth();
-  const day = date.getDate();
+  const y = date.getFullYear();
+  const m = date.getMonth();
+  const d = date.getDate();
+
+  // Fine-tuned boundaries mimicking the authentic Assamese solar calendar (Panjika)
+  const boundaries = [
+    { start: 15, prevDays: 30, asMonth: 9 },  // Jan (Magh)
+    { start: 14, prevDays: 29, asMonth: 10 }, // Feb (Phagun)
+    { start: 16, prevDays: 30, asMonth: 11 }, // Mar (Chot)
+    { start: 15, prevDays: 30, asMonth: 0 },  // Apr (Bohag)
+    { start: 15, prevDays: 31, asMonth: 1 },  // May (Jeth)
+    { start: 16, prevDays: 31, asMonth: 2 },  // Jun (Ahar)
+    { start: 17, prevDays: 31, asMonth: 3 },  // Jul (Shaon)
+    { start: 18, prevDays: 31, asMonth: 4 },  // Aug (Bhado)
+    { start: 18, prevDays: 31, asMonth: 5 },  // Sep (Ahin)
+    { start: 18, prevDays: 30, asMonth: 6 },  // Oct (Kati)
+    { start: 17, prevDays: 30, asMonth: 7 },  // Nov (Aghun)
+    { start: 16, prevDays: 30, asMonth: 8 }   // Dec (Puh)
+  ];
+
+  const isLeap = (y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0));
+  let curBound = boundaries[m];
+  let startDay = curBound.start;
+  
+  // Leap year adjustment for solar alignment
+  if (isLeap && m === 2) {
+    startDay = 15; // In March of a leap year, Chot starts earlier
+  }
+
   let asMonthIdx = 0;
   let asDay = 1;
 
-  if ((month === 3 && day >= 14) || (month === 4 && day <= 14)) { asMonthIdx = 0; asDay = month === 3 ? day - 13 : day + 17; }
-  else if ((month === 4 && day >= 15) || (month === 5 && day <= 15)) { asMonthIdx = 1; asDay = month === 4 ? day - 14 : day + 16; }
-  else if ((month === 5 && day >= 16) || (month === 6 && day <= 16)) { asMonthIdx = 2; asDay = month === 5 ? day - 15 : day + 15; }
-  else if ((month === 6 && day >= 17) || (month === 7 && day <= 16)) { asMonthIdx = 3; asDay = month === 6 ? day - 16 : day + 15; }
-  else if ((month === 7 && day >= 17) || (month === 8 && day <= 16)) { asMonthIdx = 4; asDay = month === 7 ? day - 16 : day + 15; }
-  else if ((month === 8 && day >= 17) || (month === 9 && day <= 17)) { asMonthIdx = 5; asDay = month === 8 ? day - 16 : day + 14; }
-  else if ((month === 9 && day >= 18) || (month === 10 && day <= 16)) { asMonthIdx = 6; asDay = month === 9 ? day - 17 : day + 14; }
-  else if ((month === 10 && day >= 17) || (month === 11 && day <= 15)) { asMonthIdx = 7; asDay = month === 10 ? day - 16 : day + 14; }
-  else if ((month === 11 && day >= 16) || (month === 0 && day <= 14)) { asMonthIdx = 8; asDay = month === 11 ? day - 15 : day + 16; }
-  else if ((month === 0 && day >= 15) || (month === 1 && day <= 13)) { asMonthIdx = 9; asDay = month === 0 ? day - 14 : day + 17; }
-  else if ((month === 1 && day >= 14) || (month === 2 && day <= 14)) { asMonthIdx = 10; asDay = month === 1 ? day - 13 : day + 15; }
-  else if ((month === 2 && day >= 15) || (month === 3 && day <= 13)) { asMonthIdx = 11; asDay = month === 2 ? day - 14 : day + 17; }
+  if (d >= startDay) {
+    asMonthIdx = curBound.asMonth;
+    asDay = d - startDay + 1;
+  } else {
+    let prevM = m === 0 ? 11 : m - 1;
+    asMonthIdx = boundaries[prevM].asMonth;
+    let prevDays = boundaries[m].prevDays;
+    
+    // Phagun gets an extra day in leap years which pushes the day count
+    if (isLeap && m === 2) prevDays = 30; 
+    
+    asDay = d + prevDays - startDay + 1; 
+  }
 
-  const asYear = date.getFullYear() + (month > 3 || (month === 3 && day >= 14) ? -593 : -594);
+  // Bhaskarabda begins in Bohag (April)
+  const asYear = y + ((m > 3 || (m === 3 && d >= 15)) ? -593 : -594);
   return { monthIndex: asMonthIdx, day: asDay, year: asYear };
 }
 
