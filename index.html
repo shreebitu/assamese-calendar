@@ -355,7 +355,7 @@
     }
 
     @media (max-width: 480px) {
-      .title { font-size: 1.8rem; }
+      .title { font-size: clamp(1.2rem, 8vw, 1.8rem); white-space: nowrap; }
       .container { padding: 1.5rem; }
       header { padding: 2rem 1rem 1rem; }
       .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
