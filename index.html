@@ -360,6 +360,54 @@
       .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
       .theme-toggle { top: 1rem; right: 1rem; width: 40px; height: 40px; }
       .logo-container { width: 64px; height: 64px; }
+      
+      .mobile-bottom-nav {
+        display: flex;
+      }
+      body {
+        padding-bottom: 70px; /* Space for the bottom nav */
+      }
+    }
+
+    /* Mobile Bottom Navigation (Glass Effect) */
+    .mobile-bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 65px;
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--card-border);
+      z-index: 1000;
+      padding-bottom: env(safe-area-inset-bottom);
+      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
+    }
+    .mobile-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .mobile-nav-item i {
+      width: 22px;
+      height: 22px;
+      transition: transform 0.3s ease;
+    }
+    .mobile-nav-item.active {
+      color: var(--primary);
+    }
+    .mobile-nav-item.active i {
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -491,6 +539,22 @@
       });
     });
   </script>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="./" class="mobile-nav-item active">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </a>
+    <a href="calendar/" class="mobile-nav-item">
+      <i data-lucide="calendar"></i>
+      <span>Calendar</span>
+    </a>
+    <a href="translator/" class="mobile-nav-item">
+      <i data-lucide="languages"></i>
+      <span>Translator</span>
+    </a>
+  </nav>
 </body>
 
 </html>
