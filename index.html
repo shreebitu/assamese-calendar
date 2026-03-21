@@ -22,6 +22,7 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Assamese Tools - Free Calendar & Translator" />
   <meta name="twitter:description" content="The ultimate hub for native Assamese utilities. Track events, festivals, and translate seamlessly between English and Assamese." />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
@@ -29,52 +30,15 @@
 
   <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+
   <style>
-    :root {
-      --primary: #8C1C13;
-      --primary-hover: #731710;
-      --background: #fafaf9;
-      --foreground: #1c1917;
-      --card-bg: rgba(255, 255, 255, 0.7);
-      --card-border: rgba(255, 255, 255, 0.5);
-      --text-muted: #57534e;
-    }
-
-    html.dark {
-      --primary: #f87171;
-      --primary-hover: #fca5a5;
-      --background: #1c1917;
-      --foreground: #fafaf9;
-      --card-bg: rgba(41, 37, 36, 0.7);
-      --card-border: rgba(255, 255, 255, 0.05);
-      --text-muted: #a8a29e;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: var(--background);
-      color: var(--foreground);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s, color 0.3s;
-      overflow-x: hidden;
-      position: relative;
-    }
-
+    /* Custom Homepage Styles mapping to native themes */
     .bg-pattern {
       position: absolute;
       inset: 0;
       z-index: -1;
-      background-image: radial-gradient(var(--card-border) 1px, transparent 1px);
+      background-image: radial-gradient(hsl(var(--border)) 1px, transparent 1px);
       background-size: 24px 24px;
       opacity: 0.5;
     }
@@ -93,12 +57,12 @@
       left: -10%;
       width: 50vw;
       height: 50vw;
-      background: radial-gradient(circle, rgba(140,28,19,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, hsl(var(--primary)/0.15) 0%, transparent 70%);
       animation-delay: 0s;
     }
     
     html.dark .blob-1 {
-      background: radial-gradient(circle, rgba(248,113,113,0.15) 0%, transparent 70%);
+      background: radial-gradient(circle, hsl(var(--primary)/0.25) 0%, transparent 70%);
     }
 
     .blob-2 {
@@ -106,7 +70,7 @@
       right: -10%;
       width: 60vw;
       height: 60vw;
-      background: radial-gradient(circle, rgba(217,119,6,0.1) 0%, transparent 70%);
+      background: radial-gradient(circle, hsl(var(--accent)/0.1) 0%, transparent 70%);
       animation-delay: -5s;
     }
 
@@ -120,7 +84,9 @@
       width: 100%;
       padding: 2rem;
       text-align: center;
+      margin: 0 auto;
       z-index: 1;
+      position: relative;
     }
 
     .header {
@@ -128,41 +94,24 @@
       animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .logo-container {
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 1.5rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
 
-    .logo-container img {
-      width: 60%;
-      height: 60%;
-    }
 
     .title {
       font-family: 'Outfit', sans-serif;
       font-size: 3.5rem;
       font-weight: 800;
-      color: var(--foreground);
+      color: hsl(var(--foreground));
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
     }
     
     .title .highlight {
-      color: var(--primary);
+      color: hsl(var(--primary));
     }
 
     .subtitle {
       font-size: 1.125rem;
-      color: var(--text-muted);
+      color: hsl(var(--muted-foreground));
       max-width: 500px;
       margin: 0 auto;
       line-height: 1.6;
@@ -176,18 +125,18 @@
     }
 
     .card {
-      background: var(--card-bg);
+      background: hsl(var(--card)/0.8);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 24px;
+      border: 1px solid hsl(var(--border)/0.5);
+      border-radius: var(--radius-2xl);
       padding: 2.5rem 2rem;
       text-decoration: none;
-      color: var(--foreground);
+      color: hsl(var(--foreground));
       transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -197,6 +146,7 @@
 
     .card:nth-child(1) { animation-delay: 0.1s; }
     .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
 
     html.dark .card {
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
@@ -206,44 +156,44 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(140, 28, 19, 0.06), transparent 40%);
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--primary)/0.06), transparent 40%);
       opacity: 0;
       transition: opacity 0.5s;
     }
     
     html.dark .card::before {
-      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(248, 113, 113, 0.1), transparent 40%);
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), hsl(var(--primary)/0.1), transparent 40%);
     }
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-      border-color: rgba(140, 28, 19, 0.2);
+      box-shadow: var(--shadow-xl);
+      border-color: hsl(var(--primary)/0.3);
     }
     
-    html.dark .card:hover { border-color: rgba(248, 113, 113, 0.3); }
+    html.dark .card:hover { border-color: hsl(var(--primary)/0.4); }
     .card:hover::before { opacity: 1; }
 
     .card-icon-wrapper {
       width: 72px;
       height: 72px;
-      background: rgba(140, 28, 19, 0.08);
+      background: hsl(var(--primary)/0.08);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 1.5rem;
-      color: var(--primary);
+      color: hsl(var(--primary));
       transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
     }
     
-    html.dark .card-icon-wrapper { background: rgba(248, 113, 113, 0.1); }
+    html.dark .card-icon-wrapper { background: hsl(var(--primary)/0.1); }
 
     .card:hover .card-icon-wrapper {
       transform: scale(1.1);
-      background: var(--primary);
-      color: var(--background);
+      background: hsl(var(--primary));
+      color: hsl(var(--background));
     }
 
     .card-title {
@@ -251,19 +201,25 @@
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
     .card-title .assamese {
       font-family: 'Tiro Bangla', serif;
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      display: block;
-      margin-top: 0.25rem;
-      font-weight: normal;
+      font-size: 1.1rem;
+      color: hsl(var(--muted-foreground));
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .card:hover .card-title .assamese {
+      color: hsl(var(--primary));
     }
 
     .card-desc {
-      color: var(--text-muted);
+      color: hsl(var(--muted-foreground));
       font-size: 0.95rem;
       line-height: 1.6;
       margin-bottom: 2rem;
@@ -271,38 +227,40 @@
     }
 
     .card-btn {
-      background-color: transparent;
-      color: var(--primary);
-      padding: 0.75rem 1.5rem;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.3s;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: hsl(var(--background));
+      border: 1px solid hsl(var(--border));
+      color: hsl(var(--foreground));
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 9999px;
+      transition: all 0.3s;
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
 
     .card-btn::before {
       content: '';
       position: absolute;
       inset: 0;
-      background-color: var(--primary);
-      border-radius: 9999px;
+      background: hsl(var(--primary));
+      z-index: -1;
       transform: scaleX(0);
       transform-origin: right;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: -1;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .card-btn .arrow-icon {
       transition: transform 0.3s;
     }
 
     .card:hover .card-btn {
-      color: var(--background);
+      color: hsl(var(--background));
+      border-color: hsl(var(--primary));
     }
 
     .card:hover .card-btn::before {
@@ -312,36 +270,6 @@
 
     .card:hover .card-btn .arrow-icon {
       transform: translateX(4px);
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--foreground);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s;
-      z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .theme-toggle:hover {
-      transform: translateY(-2px);
-      background: var(--card-bg);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
-    }
-    
-    .theme-toggle:active {
-      transform: translateY(0);
     }
 
     @keyframes slideDown {
@@ -359,239 +287,236 @@
       .container { padding: 1.5rem; }
       header { padding: 2rem 1rem 1rem; }
       .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .theme-toggle { top: 1rem; right: 1rem; width: 40px; height: 40px; }
       .logo-container { width: 64px; height: 64px; }
-      
-      .mobile-bottom-nav {
-        display: flex;
-      }
     }
     @media (max-width: 640px) {
       .title { font-size: 2.5rem; }
       .container { padding: 1.5rem; }
       .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .theme-toggle { top: 1rem; right: 1rem; width: 40px; height: 40px; }
       .logo-container { width: 64px; height: 64px; }
-      
-      .mobile-bottom-nav {
-        display: flex;
-      }
-      body {
-        padding-bottom: 70px; /* Space for the bottom nav */
-      }
-    }
-
-    /* Mobile Bottom Navigation (Glass Effect) */
-    .mobile-bottom-nav {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 65px;
-      background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-top: 1px solid var(--card-border);
-      z-index: 1000;
-      padding-bottom: env(safe-area-inset-bottom);
-      box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.06);
-    }
-    .mobile-nav-item {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.75rem;
-      font-weight: 600;
-      transition: all 0.3s ease;
-    }
-    .mobile-nav-item i {
-      width: 22px;
-      height: 22px;
-      transition: transform 0.3s ease;
-    }
-    .mobile-nav-item.active {
-      color: var(--primary);
-    }
-    .mobile-nav-item.active i {
-      transform: scale(1.1);
     }
   </style>
 </head>
 
 <body>
-  <div class="bg-pattern"></div>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-
-  <button class="theme-toggle" id="theme-btn" title="Toggle Theme">
-    <i data-lucide="moon" id="moon-icon" style="width: 20px; height: 20px;"></i>
-    <i data-lucide="sun" id="sun-icon" style="display:none; width: 20px; height: 20px;"></i>
-  </button>
-
-  <div class="container">
-    <header class="header">
-      <div class="logo-container">
-        <img src="assets/images/favicon.svg" alt="App Logo" />
-      </div>
-      <h1 class="title">Assamese <span class="highlight">Tools</span></h1>
-      <p class="subtitle">Empowering your digital experience with native Assamese utilities. Explore our perfectly crafted features.</p>
-    </header>
-
-    <div class="cards-grid">
-      <!-- Calendar Card -->
-      <a href="calendar/" class="card" id="card-calendar">
-        <div class="card-icon-wrapper">
-          <i data-lucide="calendar" style="width: 32px; height: 32px;"></i>
-        </div>
-        <h2 class="card-title">
-          Calendar
-          <span class="assamese">অসমীয়া কেলেণ্ডাৰ</span>
-        </h2>
-        <p class="card-desc">Stay updated with Assamese months, festivals, and track local events beautifully.</p>
-        <div class="card-btn">
-          Open Calendar <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
+  <!-- App Layout Wrapper -->
+  <div class="app-wrapper">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-nav">
+      <a href="./" style="text-decoration: none; display: block; color: inherit; outline: none;">
+        <div class="brand">
+          <div class="logo-icon">
+            <img src="assets/images/favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title" data-i18n="app.title_pt1">Assamese</span>
+            <span class="brand-subtitle" data-i18n="app.title_pt5">Tools</span>
+          </div>
         </div>
       </a>
 
-      <!-- Translator Card -->
-      <a href="translator/" class="card" id="card-translator">
-        <div class="card-icon-wrapper">
-          <i data-lucide="languages" style="width: 32px; height: 32px;"></i>
-        </div>
-        <h2 class="card-title">
-          Translator
-          <span class="assamese">অসমী অনুবাদক</span>
-        </h2>
-        <p class="card-desc">Seamlessly translate between Assamese and English with high accuracy natively.</p>
-        <div class="card-btn">
-          Open Translator <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
-        </div>
-      </a>
-
-      <!-- Holiday Card -->
-      <a href="holiday/" class="card" id="card-holiday">
-        <div class="card-icon-wrapper">
-          <i data-lucide="briefcase" style="width: 32px; height: 32px;"></i>
-        </div>
-        <h2 class="card-title">
-          Holidays
-          <span class="assamese">অসমৰ চৰকাৰী বন্ধ</span>
-        </h2>
-        <p class="card-desc">Official list of public holidays in Assam for the current year.</p>
-        <div class="card-btn">
-          View Holidays <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
-        </div>
-      </a>
-    </div>
-
-    <!-- About Our Tools Section -->
-    <!-- About Our Tools Section -->
-    <section style="margin-top: 4rem; text-align: left; padding: 2.5rem; background: var(--card-bg); border-radius: 24px; border: 1px solid var(--card-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 0.3s; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);">
-      
-      <!-- Our Mission -->
-      <div style="margin-bottom: 3.5rem;">
-        <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 1.5rem; color: var(--foreground); display: flex; align-items: center; gap: 0.75rem;">
-          <i data-lucide="target" style="color: var(--primary);"></i> Our Mission – Simple Tools, Real Help
-        </h2>
-        <p style="color: var(--text-muted); line-height: 1.7; font-size: 1.1rem; margin-bottom: 1.5rem;">
-          We’re not trying to build something complicated or confusing.
-        </p>
-        <p style="font-weight: 700; color: var(--foreground); margin-bottom: 1rem; font-size: 1.15rem;">Our mission is clear:</p>
-        <ul style="list-style-type: none; padding-left: 0; color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><i data-lucide="check" style="width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; margin-top: 4px;"></i> Make daily tasks easier for Assamese users</li>
-          <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><i data-lucide="check" style="width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; margin-top: 4px;"></i> Provide accurate and genuine information</li>
-          <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><i data-lucide="check" style="width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; margin-top: 4px;"></i> Keep everything simple, fast, and free</li>
-        </ul>
-        <p style="color: var(--text-muted); line-height: 1.7; font-size: 1.1rem;">
-          Honestly, we noticed that many existing tools are either outdated or not accurate. So we decided to fix that.
-        </p>
+      <div class="nav-menu">
+        <a href="./" class="nav-item active w-full">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span data-i18n="nav.home">Home</span>
+        </a>
+        <a href="calendar/" class="nav-item w-full">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          <span data-i18n="nav.calendar">Calendar</span>
+        </a>
+        <a href="translator/" class="nav-item w-full">
+          <i data-lucide="languages" class="w-5 h-5"></i>
+          <span data-i18n="nav.translator">Assamese Translator</span>
+        </a>
+        <a href="holiday/" class="nav-item w-full">
+          <i data-lucide="briefcase" class="w-5 h-5"></i>
+          <span data-i18n="nav.holiday">Holidays 2026</span>
+        </a>
       </div>
 
-      <!-- FAQ Section -->
-      <div>
-        <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: var(--foreground); display: flex; align-items: center; gap: 0.75rem;">
-          <i data-lucide="help-circle" style="color: var(--primary);"></i> ❓ FAQ – Common Questions
-        </h2>
-        
-        <div style="display: flex; flex-direction: column; gap: 2rem;">
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.75rem;">1. Is the Assamese date tool accurate?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 1.05rem;">Yes, we use reliable and updated sources to ensure accuracy.</p>
-          </div>
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.75rem;">2. How accurate is the translator?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 1.05rem;">It works great for basic translations. For complex sentences, a little manual adjustment might be needed.</p>
-          </div>
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.75rem;">3. Is the holiday list official?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 1.05rem;">Yes, we only use genuine Assam government holiday data.</p>
-          </div>
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.75rem;">4. Are these tools free?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 1.05rem;">Absolutely. No hidden charges.</p>
-          </div>
-          <div>
-            <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--foreground); margin-bottom: 0.75rem;">5. Can I use this on mobile?</h3>
-            <p style="color: var(--text-muted); line-height: 1.6; font-size: 1.05rem;">Yes, the website is fully mobile-friendly.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer style="margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid var(--card-border); text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-      <p style="margin-bottom: 0.5rem;">&copy; 2026 Assamese Tools. All rights reserved.</p>
-      <div style="display: flex; justify-content: center; gap: 0.75rem;">
-        <a href="about/" style="color: var(--primary); text-decoration: none; font-weight: 500;">About & Contact</a>
+      <div class="nav-secondary" style="margin-top: auto; margin-bottom: 1rem; padding: 0 0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 500; white-space: nowrap;">
+        <a href="about/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">About & Contact</a>
         <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
-        <a href="privacy/" style="color: var(--primary); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+        <a href="privacy/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
       </div>
-    </footer>
+
+      <div class="nav-footer">
+        <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+          <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+        </button>
+        <button id="lang-toggle-btn" class="lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+          <i data-lucide="languages" class="w-4 h-4"></i>
+          <span id="lang-text" class="text-sm font-semibold">EN</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Scroll Area -->
+    <div class="content-scroll relative w-full h-full">
+      <div class="bg-pattern"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+
+      <!-- Mobile Header -->
+      <header class="mobile-header" style="justify-content: space-between; align-items: center; padding: 1rem; position: sticky; top: 0; z-index: 50; background: hsl(var(--card)/0.85); backdrop-filter: blur(16px); border-bottom: 1px solid hsl(var(--border) / 0.5);">
+        <a href="./" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; outline: none;">
+          <img src="assets/images/favicon.svg" alt="App Logo" style="width: 24px; height: 24px;" />
+          <span data-i18n="app.title_tools" style="font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 800; color: hsl(var(--foreground)); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Assamese Tools</span>
+        </a>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="mobile-theme-btn icon-button" title="Toggle Dark/Light Mode">
+            <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+            <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+          </button>
+          <button class="mobile-lang-btn lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            <span class="lang-text text-sm font-semibold">EN</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="container">
+        <header class="header">
+          <h1 class="title">Assamese <span class="highlight" data-i18n="app.title_pt5">Tools</span></h1>
+        </header>
+
+        <div class="cards-grid">
+          <!-- Calendar Card -->
+          <a href="calendar/" class="card" id="card-calendar">
+            <div class="card-icon-wrapper">
+              <i data-lucide="calendar" style="width: 32px; height: 32px;"></i>
+            </div>
+            <h2 class="card-title">
+              <span data-i18n="nav.calendar">Calendar</span>
+              <span class="assamese">অসমীয়া কেলেণ্ডাৰ</span>
+            </h2>
+            <p class="card-desc">Stay updated with Assamese months, festivals, and track local events beautifully.</p>
+            <div class="card-btn">
+              Open Calendar <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
+            </div>
+          </a>
+
+          <!-- Translator Card -->
+          <a href="translator/" class="card" id="card-translator">
+            <div class="card-icon-wrapper">
+              <i data-lucide="languages" style="width: 32px; height: 32px;"></i>
+            </div>
+            <h2 class="card-title">
+              <span data-i18n="nav.translator">Translator</span>
+              <span class="assamese">অসমী অনুবাদক</span>
+            </h2>
+            <p class="card-desc">Seamlessly translate between Assamese and English with high accuracy natively.</p>
+            <div class="card-btn">
+              Open Translator <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
+            </div>
+          </a>
+
+          <!-- Holiday Card -->
+          <a href="holiday/" class="card" id="card-holiday">
+            <div class="card-icon-wrapper">
+              <i data-lucide="briefcase" style="width: 32px; height: 32px;"></i>
+            </div>
+            <h2 class="card-title">
+              <span data-i18n="nav.holiday">Holidays</span>
+              <span class="assamese">অসমৰ চৰকাৰী বন্ধ</span>
+            </h2>
+            <p class="card-desc">Official list of public holidays in Assam for the current year.</p>
+            <div class="card-btn">
+              View Holidays <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
+            </div>
+          </a>
+        </div>
+
+        <!-- About Our Tools Section -->
+        <section style="margin-top: 4rem; text-align: left; padding: 2.5rem; background: hsl(var(--card)/0.8); border-radius: 24px; border: 1px solid hsl(var(--border)/0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) backwards; animation-delay: 0.3s; box-shadow: var(--shadow-sm);">
+          
+          <!-- Our Mission -->
+          <div style="margin-bottom: 3.5rem;">
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 1.5rem; color: hsl(var(--foreground)); display: flex; align-items: center; gap: 0.75rem;">
+              <i data-lucide="target" style="color: hsl(var(--primary));"></i> Our Mission – Simple Tools, Real Help
+            </h2>
+            <p style="color: hsl(var(--muted-foreground)); line-height: 1.7; font-size: 1.1rem; margin-bottom: 1.5rem;">
+              We’re not trying to build something complicated or confusing.
+            </p>
+            <p style="font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 1rem; font-size: 1.15rem;">Our mission is clear:</p>
+            <ul style="list-style-type: none; padding-left: 0; color: hsl(var(--muted-foreground)); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+              <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><i data-lucide="check" style="width: 20px; height: 20px; color: hsl(var(--accent)); flex-shrink: 0; margin-top: 4px;"></i> Make daily tasks easier for Assamese users</li>
+              <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><i data-lucide="check" style="width: 20px; height: 20px; color: hsl(var(--accent)); flex-shrink: 0; margin-top: 4px;"></i> Provide accurate and genuine information</li>
+              <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><i data-lucide="check" style="width: 20px; height: 20px; color: hsl(var(--accent)); flex-shrink: 0; margin-top: 4px;"></i> Keep everything simple, fast, and free</li>
+            </ul>
+            <p style="color: hsl(var(--muted-foreground)); line-height: 1.7; font-size: 1.1rem;">
+              Honestly, we noticed that many existing tools are either outdated or not accurate. So we decided to fix that.
+            </p>
+          </div>
+
+          <!-- FAQ Section -->
+          <div>
+            <h2 style="font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 2rem; color: hsl(var(--foreground)); display: flex; align-items: center; gap: 0.75rem;">
+              <i data-lucide="help-circle" style="color: hsl(var(--primary));"></i> ❓ FAQ – Common Questions
+            </h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">1. Is the Assamese date tool accurate?</h3>
+                <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; font-size: 1.05rem;">Yes, we use reliable and updated sources to ensure accuracy.</p>
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">2. How accurate is the translator?</h3>
+                <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; font-size: 1.05rem;">It works great for basic translations. For complex sentences, a little manual adjustment might be needed.</p>
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">3. Is the holiday list official?</h3>
+                <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; font-size: 1.05rem;">Yes, we only use genuine Assam government holiday data.</p>
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">4. Are these tools free?</h3>
+                <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; font-size: 1.05rem;">Absolutely. No hidden charges.</p>
+              </div>
+              <div>
+                <h3 style="font-size: 1.2rem; font-weight: 700; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">5. Can I use this on mobile?</h3>
+                <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; font-size: 1.05rem;">Yes, the website is fully mobile-friendly.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer style="margin-top: 2rem; padding: 1.5rem 1rem; border-top: 1px solid hsl(var(--border)/0.5); text-align: center; color: hsl(var(--muted-foreground)); font-size: 0.9rem;">
+          <p style="margin-bottom: 0.5rem;">&copy; 2026 Assamese Tools. All rights reserved.</p>
+          <div style="display: flex; justify-content: center; gap: 0.75rem;">
+            <a href="about/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">About & Contact</a>
+            <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+            <a href="privacy/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+          </div>
+        </footer>
+      </div>
+    </div>
   </div>
 
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="./" class="mobile-nav-item active">
+      <i data-lucide="home"></i>
+      <span data-i18n="nav.home">Home</span>
+    </a>
+    <a href="calendar/" class="mobile-nav-item">
+      <i data-lucide="calendar"></i>
+      <span data-i18n="nav.calendar">Calendar</span>
+    </a>
+    <a href="translator/" class="mobile-nav-item">
+      <i data-lucide="languages"></i>
+      <span data-i18n="nav.translator">Translator</span>
+    </a>
+    <a href="holiday/" class="mobile-nav-item">
+      <i data-lucide="briefcase"></i>
+      <span data-i18n="nav.holiday">Holidays</span>
+    </a>
+  </nav>
+
+  <!-- External Scripts -->
+  <script src="assets/js/script.js"></script>
   <script>
-    // Initialize Lucide icons
-    lucide.createIcons();
-
-    // Theme toggling logic
-    const themeBtn = document.getElementById('theme-btn');
-    const htmlElement = document.documentElement;
-    const moonIcon = document.getElementById('moon-icon');
-    const sunIcon = document.getElementById('sun-icon');
-
-    // Check system preference or localStorage
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      htmlElement.classList.add('dark');
-      htmlElement.classList.remove('light');
-      moonIcon.style.display = 'none';
-      sunIcon.style.display = 'block';
-    }
-
-    themeBtn.addEventListener('click', () => {
-      if (htmlElement.classList.contains('dark')) {
-        htmlElement.classList.remove('dark');
-        htmlElement.classList.add('light');
-        localStorage.setItem('theme', 'light');
-        moonIcon.style.display = 'block';
-        sunIcon.style.display = 'none';
-      } else {
-        htmlElement.classList.add('dark');
-        htmlElement.classList.remove('light');
-        localStorage.setItem('theme', 'dark');
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'block';
-      }
-    });
-
     // Mouse move effect for cards
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mousemove', e => {
@@ -603,26 +528,5 @@
       });
     });
   </script>
-
-  <!-- Mobile Bottom Navigation -->
-  <nav class="mobile-bottom-nav">
-    <a href="./" class="mobile-nav-item active">
-      <i data-lucide="home"></i>
-      <span>Home</span>
-    </a>
-    <a href="calendar/" class="mobile-nav-item">
-      <i data-lucide="calendar"></i>
-      <span>Calendar</span>
-    </a>
-    <a href="translator/" class="mobile-nav-item">
-      <i data-lucide="languages"></i>
-      <span>Translator</span>
-    </a>
-    <a href="holiday/" class="mobile-nav-item">
-      <i data-lucide="briefcase"></i>
-      <span>Holidays</span>
-    </a>
-  </nav>
 </body>
-
 </html>
