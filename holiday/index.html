@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Assam Govt Holidays 2024 - Assamese Tools</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Tiro+Bangla:ital@0;1&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+
+  <style>
+    /* Beautiful Table Styles */
+    .holiday-container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .holiday-header {
+      margin-bottom: 2rem;
+      text-align: center;
+      animation: fade-in 0.6s ease-out;
+    }
+
+    .holiday-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .holiday-subtitle {
+      color: hsl(var(--muted-foreground));
+      font-size: 1.1rem;
+    }
+
+    .table-card {
+      background-color: hsl(var(--card) / 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      animation: zoom-in 0.6s ease-out backwards;
+      animation-delay: 0.2s;
+    }
+
+    .holi-table-wrapper {
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    .holiday-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .holiday-table th {
+      background-color: hsl(var(--muted) / 0.5);
+      color: hsl(var(--foreground));
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      padding: 1.25rem 1.5rem;
+      font-size: 1rem;
+      border-bottom: 2px solid hsl(var(--border));
+      white-space: nowrap;
+    }
+
+    .holiday-table td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid hsl(var(--border) / 0.5);
+      color: hsl(var(--muted-foreground));
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+
+    .holiday-table tbody tr {
+      transition: background-color 0.3s;
+    }
+
+    .holiday-table tbody tr:hover {
+      background-color: hsl(var(--primary) / 0.05);
+    }
+
+    .holiday-table tbody tr:hover td {
+      color: hsl(var(--foreground));
+    }
+
+    .holiday-name {
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
+    .holiday-date {
+      font-variant-numeric: tabular-nums;
+      font-weight: 500;
+      color: hsl(var(--primary));
+    }
+
+    /* Mobile Responsive Adjustments */
+    @media (max-width: 640px) {
+      .holiday-title {
+        font-size: 1.75rem;
+      }
+
+      .holiday-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .holiday-container {
+        padding: 0.5rem;
+      }
+
+      .table-card {
+        border-radius: var(--radius-lg);
+      }
+
+      .holiday-table th,
+      .holiday-table td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- App Layout Wrapper -->
+  <div class="app-wrapper">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-nav">
+      <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;">
+        <div class="brand">
+          <div class="logo-icon">
+            <img src="../assets/images/favicon.svg" alt="App Logo"
+              style="width: 60%; height: 60%; object-fit: contain;" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Assamese</span>
+            <span class="brand-subtitle">Tools</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../" class="nav-item w-full">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span>Home</span>
+        </a>
+        <a href="../calendar/" class="nav-item w-full">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          <span>Calendar</span>
+        </a>
+        <a href="../translator/" class="nav-item w-full">
+          <i data-lucide="languages" class="w-5 h-5"></i>
+          <span>Assamese Translator</span>
+        </a>
+        <a href="../holiday/" class="nav-item active w-full">
+          <i data-lucide="briefcase" class="w-5 h-5"></i>
+          <span>Holidays 2024</span>
+        </a>
+      </div>
+
+      <div class="nav-secondary" style="margin-top: auto; margin-bottom: 1rem; padding: 0 0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 500; white-space: nowrap;">
+        <a href="../about/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">About & Contact</a>
+        <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+        <a href="../privacy/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
+      </div>
+
+      <div class="nav-footer">
+        <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+          <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+        </button>
+        <button id="lang-toggle-btn" class="lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+          <i data-lucide="languages" class="w-4 h-4"></i>
+          <span id="lang-text" class="text-sm font-semibold">EN</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Scroll Area -->
+    <div class="content-scroll">
+      <!-- Mobile Header -->
+      <header class="mobile-header" style="justify-content: space-between; align-items: center; padding: 1rem; position: sticky; top: 0; z-index: 50; background: hsl(var(--card)/0.85); backdrop-filter: blur(16px); border-bottom: 1px solid hsl(var(--border) / 0.5);">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 24px; height: 24px;" />
+          <span style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: hsl(var(--foreground));">Assamese Tools</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="mobile-theme-btn icon-button" title="Toggle Dark/Light Mode">
+            <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+            <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+          </button>
+          <button class="mobile-lang-btn lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            <span class="lang-text text-sm font-semibold">EN</span>
+          </button>
+        </div>
+      </header>
+      <div class="dashboard-layout" style="display: block;">
+
+        <div class="holiday-container">
+          <div class="holiday-header">
+            <h1 class="holiday-title">Assam Govt Holidays 2024</h1>
+            <p class="holiday-subtitle">Official List of Public Holidays in Assam for the Year 2024</p>
+          </div>
+
+          <div class="table-card">
+            <div class="holi-table-wrapper">
+              <table class="holiday-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>Holiday</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="holiday-date">15th January 2024</td>
+                    <td>Monday</td>
+                    <td class="holiday-name">Magh Bihu & Tusu Puja</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">16th January 2024</td>
+                    <td>Tuesday</td>
+                    <td class="holiday-name">Magh Bihu & Tusu Puja</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">23rd January 2024</td>
+                    <td>Tuesday</td>
+                    <td class="holiday-name">Gwthar Bathou San/Netaji’s Birthday</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">26th January 2024</td>
+                    <td>Friday</td>
+                    <td class="holiday-name">Republic Day</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">31st January 2024</td>
+                    <td>Wednessday</td>
+                    <td class="holiday-name">Me-Dam -Me-Phi</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">24th February 2024</td>
+                    <td>Saturday</td>
+                    <td class="holiday-name">Bir Chilaray Divas</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">25th March 2024</td>
+                    <td>Monday</td>
+                    <td class="holiday-name">Dol Jatra</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">29th March 2024</td>
+                    <td>Friday</td>
+                    <td class="holiday-name">Good Friday</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">11th April 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Id-Ul-Fitr</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">13th April 2024</td>
+                    <td>Saturday</td>
+                    <td class="holiday-name">Bohag Bihu</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">14th April 2024</td>
+                    <td>Sunday</td>
+                    <td class="holiday-name">Bohag Bihu</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">15th April 2024</td>
+                    <td>Monday</td>
+                    <td class="holiday-name">Bohag Bihu</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">20th April 2024</td>
+                    <td>Saturday</td>
+                    <td class="holiday-name">Sati Sadhini Divas</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">1st May 2024</td>
+                    <td>Wednessday</td>
+                    <td class="holiday-name">May Day</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">8th May 2024</td>
+                    <td>Wednessday</td>
+                    <td class="holiday-name">Tithi of Damodar Deva/ Birthday of Ravindranath</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">23rd May 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Buddha Purnima</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">24th May 2024</td>
+                    <td>Friday</td>
+                    <td class="holiday-name">Janmotsav of Sri Sri Madhabdeva</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">17th June 2024</td>
+                    <td>Monday</td>
+                    <td class="holiday-name">Id-ul-Zuha</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">15th August 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Independence Day</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">23rd August 2024</td>
+                    <td>Friday</td>
+                    <td class="holiday-name">Tirubhav Tithi of Sri Sri Madhabdeva</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">26th August 2024</td>
+                    <td>Monday</td>
+                    <td class="holiday-name">Janmashtami</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">4th September 2024</td>
+                    <td>Wednessday</td>
+                    <td class="holiday-name">Tirubhav Tithi of Srimanta Sankardeva</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">14th September 2024</td>
+                    <td>Saturday</td>
+                    <td class="holiday-name">Karam Puja</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">2nd October 2024</td>
+                    <td>Wednessday</td>
+                    <td class="holiday-name">Birthday of Mahatma Gandhi</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">10th October 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Durga Puja / Maha Saptami</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">11th October 2024</td>
+                    <td>Friday</td>
+                    <td class="holiday-name">Durga Puja / Maha Ashtami / Maha Navami</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">12th October 2024</td>
+                    <td>Saturday</td>
+                    <td class="holiday-name">Durga Puja / Dussehra</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">13th October 2024</td>
+                    <td>Sunday</td>
+                    <td class="holiday-name">Vijaya Dashomi / Janmotsav of Sri Sri Sankardeva</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">17th October 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Kati Bihu</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">31st October 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Kali Puja & Diwali</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">3rd November 2024</td>
+                    <td>Sunday</td>
+                    <td class="holiday-name">Bhatri Dwitiya / Bhai Duj</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">7th November 2024</td>
+                    <td>Thursday</td>
+                    <td class="holiday-name">Chhat Puja</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">15th November 2024</td>
+                    <td>Friday</td>
+                    <td class="holiday-name">Guru Nanak’s Birthday</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">24th November 2024</td>
+                    <td>Sunday</td>
+                    <td class="holiday-name">Lachit Divas</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">2nd December 2024</td>
+                    <td>Monday</td>
+                    <td class="holiday-name">Asom Divas( Su-Ka-Pha Divas)</td>
+                  </tr>
+                  <tr>
+                    <td class="holiday-date">25th December 2024</td>
+                    <td>Wednessday</td>
+                    <td class="holiday-name">Christmas Day</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Mobile Footer -->
+          <footer class="mobile-footer" style="padding: 2rem 1rem; text-align: center; border-top: 1px solid hsl(var(--border)/0.5); margin-top: 2rem;">
+            <div style="display: flex; justify-content: center; gap: 0.75rem; font-size: 0.9rem;">
+              <a href="../about/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">About & Contact</a>
+              <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+              <a href="../privacy/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="../" class="mobile-nav-item">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </a>
+    <a href="../calendar/" class="mobile-nav-item">
+      <i data-lucide="calendar"></i>
+      <span>Calendar</span>
+    </a>
+    <a href="../translator/" class="mobile-nav-item">
+      <i data-lucide="languages"></i>
+      <span>Translator</span>
+    </a>
+    <a href="../holiday/" class="mobile-nav-item active">
+      <i data-lucide="briefcase"></i>
+      <span>Holidays</span>
+    </a>
+  </nav>
+
+  <!-- External Scripts -->
+  <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

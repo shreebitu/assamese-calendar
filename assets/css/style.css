@@ -1640,4 +1640,16 @@ input:checked+.slider:before {
   .app-wrapper, .dashboard-layout {
     padding-bottom: 70px;
   }
+  .mobile-header {
+    display: flex !important;
+  }
+  .mobile-footer {
+    display: block !important;
+  }
+}
+.mobile-header {
+  display: none;
+}
+.mobile-footer {
+  display: none;
 }

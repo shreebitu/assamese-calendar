@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>About Us & Contact - Assamese Tools</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  
+  <style>
+    .page-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+      text-align: center;
+      animation: fade-in 0.6s ease-out;
+    }
+
+    .page-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: hsl(var(--foreground));
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      color: hsl(var(--muted-foreground));
+      font-size: 1.1rem;
+    }
+
+    .content-card {
+      background-color: hsl(var(--card) / 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      animation: zoom-in 0.6s ease-out backwards;
+      animation-delay: 0.2s;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.7;
+    }
+
+    .content-card h2 {
+      color: hsl(var(--foreground));
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
+    .form-input {
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-md);
+      border: 1px solid hsl(var(--border));
+      background-color: hsl(var(--background) / 0.5);
+      color: hsl(var(--foreground));
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: hsl(var(--primary));
+      box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+    }
+
+    .submit-btn {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background-color: hsl(var(--primary) / 0.9);
+      transform: translateY(-2px);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: hsl(var(--muted));
+      color: hsl(var(--foreground));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 640px) {
+      .page-title {
+        font-size: 2rem;
+      }
+      .content-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- App Layout Wrapper -->
+  <div class="app-wrapper">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-nav">
+      <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;">
+        <div class="brand">
+          <div class="logo-icon">
+            <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Assamese</span>
+            <span class="brand-subtitle">Tools</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../" class="nav-item w-full">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span>Home</span>
+        </a>
+        <a href="../calendar/" class="nav-item w-full">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          <span>Calendar</span>
+        </a>
+        <a href="../translator/" class="nav-item w-full">
+          <i data-lucide="languages" class="w-5 h-5"></i>
+          <span>Assamese Translator</span>
+        </a>
+        <a href="../holiday/" class="nav-item w-full">
+          <i data-lucide="briefcase" class="w-5 h-5"></i>
+          <span>Holidays 2024</span>
+        </a>
+      </div>
+      
+      <div class="nav-secondary" style="margin-top: auto; margin-bottom: 1rem; padding: 0 0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 500; white-space: nowrap;">
+        <a href="../about/" style="color: hsl(var(--primary)); text-decoration: none; transition: color 0.2s;">About & Contact</a>
+        <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+        <a href="../privacy/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
+      </div>
+
+      <div class="nav-footer">
+        <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+          <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Scroll Area -->
+    <div class="content-scroll">
+      <!-- Mobile Header -->
+      <header class="mobile-header" style="justify-content: space-between; align-items: center; padding: 1rem; position: sticky; top: 0; z-index: 50; background: hsl(var(--card)/0.85); backdrop-filter: blur(16px); border-bottom: 1px solid hsl(var(--border) / 0.5);">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 24px; height: 24px;" />
+          <span style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: hsl(var(--foreground));">Assamese Tools</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="mobile-theme-btn icon-button" title="Toggle Dark/Light Mode">
+            <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+            <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+          </button>
+          <button class="mobile-lang-btn lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            <span class="lang-text text-sm font-semibold">EN</span>
+          </button>
+        </div>
+      </header>
+      <div class="dashboard-layout" style="display: block;">
+        <div class="page-container">
+          <div class="page-header">
+            <h1 class="page-title">About Us & Contact</h1>
+            <p class="page-subtitle">Learn more about our mission or get in touch below.</p>
+          </div>
+
+          <div class="content-card">
+            <h2><i data-lucide="info" class="w-6 h-6 text-primary"></i> About Assamese Tools</h2>
+            <p><strong>Assamese Tools</strong> was created with a singular vision: to bridge the digital gap for the Assamese-speaking community around the globe. Our platform brings you essential, highly functional everyday utilities directly in an intuitive Assamese native format.</p>
+            <p>From an intelligent calendar that correctly tracks our cultural and astronomical festivals to a cutting-edge English-to-Assamese translator, we strive to build premium digital infrastructure celebrating our linguistic heritage.</p>
+          </div>
+
+          <div class="content-card">
+            <h2><i data-lucide="mail" class="w-6 h-6 text-primary"></i> Contact Us</h2>
+            <p>Got questions, suggestions, or spotted a bug? Let us know! Fill out the form below or reach us directly at <strong>support@assamesetools.in</strong>.</p>
+            
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!'); this.reset();">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" class="form-input" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" class="form-input" rows="5" placeholder="How can we help?" required></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                <i data-lucide="send" class="w-4 h-4"></i> Send Message
+              </button>
+            </form>
+
+            <div class="social-links">
+              <a href="#" class="social-btn" title="Facebook"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+              <a href="#" class="social-btn" title="Twitter"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+              <a href="#" class="social-btn" title="Instagram"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+            </div>
+          </div>
+          <!-- Mobile Footer -->
+          <footer class="mobile-footer" style="padding: 2rem 1rem; text-align: center; border-top: 1px solid hsl(var(--border)/0.5); margin-top: 2rem;">
+            <div style="display: flex; justify-content: center; gap: 0.75rem; font-size: 0.9rem;">
+              <a href="../about/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">About & Contact</a>
+              <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+              <a href="../privacy/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="../" class="mobile-nav-item">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </a>
+    <a href="../calendar/" class="mobile-nav-item">
+      <i data-lucide="calendar"></i>
+      <span>Calendar</span>
+    </a>
+    <a href="../translator/" class="mobile-nav-item">
+      <i data-lucide="languages"></i>
+      <span>Translator</span>
+    </a>
+    <a href="../holiday/" class="mobile-nav-item">
+      <i data-lucide="briefcase"></i>
+      <span>Holidays</span>
+    </a>
+  </nav>
+
+  <!-- External Scripts -->
+  <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

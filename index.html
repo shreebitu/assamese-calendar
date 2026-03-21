@@ -116,7 +116,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1200px;
       width: 100%;
       padding: 2rem;
       text-align: center;
@@ -170,7 +170,7 @@
 
     .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
       gap: 1.5rem;
       padding: 0.5rem;
     }
@@ -461,6 +461,21 @@
           Open Translator <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
         </div>
       </a>
+
+      <!-- Holiday Card -->
+      <a href="holiday/" class="card" id="card-holiday">
+        <div class="card-icon-wrapper">
+          <i data-lucide="briefcase" style="width: 32px; height: 32px;"></i>
+        </div>
+        <h2 class="card-title">
+          Holidays
+          <span class="assamese">অসমৰ চৰকাৰী বন্ধ</span>
+        </h2>
+        <p class="card-desc">Official list of public holidays in Assam for the current year.</p>
+        <div class="card-btn">
+          View Holidays <i data-lucide="arrow-right" class="arrow-icon" style="width:18px; height:18px;"></i>
+        </div>
+      </a>
     </div>
 
     <!-- About Our Tools Section -->
@@ -489,6 +504,16 @@
         </div>
       </div>
     </section>
+
+    <!-- Footer Section -->
+    <footer style="margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid var(--card-border); text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+      <p style="margin-bottom: 0.5rem;">&copy; 2024 Assamese Tools. All rights reserved.</p>
+      <div style="display: flex; justify-content: center; gap: 0.75rem;">
+        <a href="about/" style="color: var(--primary); text-decoration: none; font-weight: 500;">About & Contact</a>
+        <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+        <a href="privacy/" style="color: var(--primary); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+      </div>
+    </footer>
   </div>
 
   <script>
@@ -553,6 +578,10 @@
     <a href="translator/" class="mobile-nav-item">
       <i data-lucide="languages"></i>
       <span>Translator</span>
+    </a>
+    <a href="holiday/" class="mobile-nav-item">
+      <i data-lucide="briefcase"></i>
+      <span>Holidays</span>
     </a>
   </nav>
 </body>

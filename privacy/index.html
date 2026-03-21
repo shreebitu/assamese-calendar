@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Privacy Policy - Assamese Tools</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&family=Tiro+Bangla:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  
+  <style>
+    .page-container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .page-header {
+      margin-bottom: 2.5rem;
+      animation: fade-in 0.6s ease-out;
+    }
+
+    .page-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: hsl(var(--foreground));
+      margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+      color: hsl(var(--muted-foreground));
+      font-size: 1.1rem;
+    }
+
+    .content-card {
+      background-color: hsl(var(--card) / 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid hsl(var(--border) / 0.5);
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-xl);
+      padding: 2.5rem;
+      animation: zoom-in 0.6s ease-out backwards;
+      animation-delay: 0.2s;
+      color: hsl(var(--muted-foreground));
+      line-height: 1.7;
+    }
+
+    .content-card h2 {
+      color: hsl(var(--foreground));
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .content-card h2:first-child {
+      margin-top: 0;
+    }
+
+    .content-card p {
+      margin-bottom: 1.25rem;
+    }
+
+    .content-card ul {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    .content-card li {
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .page-title {
+        font-size: 2rem;
+      }
+      .content-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- App Layout Wrapper -->
+  <div class="app-wrapper">
+    <!-- Left Navigation Sidebar -->
+    <aside class="left-nav">
+      <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;">
+        <div class="brand">
+          <div class="logo-icon">
+            <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 60%; height: 60%; object-fit: contain;" />
+          </div>
+          <div class="brand-text">
+            <span class="brand-title">Assamese</span>
+            <span class="brand-subtitle">Tools</span>
+          </div>
+        </div>
+      </a>
+
+      <div class="nav-menu">
+        <a href="../" class="nav-item w-full">
+          <i data-lucide="home" class="w-5 h-5"></i>
+          <span>Home</span>
+        </a>
+        <a href="../calendar/" class="nav-item w-full">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+          <span>Calendar</span>
+        </a>
+        <a href="../translator/" class="nav-item w-full">
+          <i data-lucide="languages" class="w-5 h-5"></i>
+          <span>Assamese Translator</span>
+        </a>
+        <a href="../holiday/" class="nav-item w-full">
+          <i data-lucide="briefcase" class="w-5 h-5"></i>
+          <span>Holidays 2024</span>
+        </a>
+      </div>
+      
+      <div class="nav-secondary" style="margin-top: auto; margin-bottom: 1rem; padding: 0 0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 500; white-space: nowrap;">
+        <a href="../about/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">About & Contact</a>
+        <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+        <a href="../privacy/" style="color: hsl(var(--primary)); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
+      </div>
+
+      <div class="nav-footer">
+        <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
+          <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+          <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content Scroll Area -->
+    <div class="content-scroll">
+      <!-- Mobile Header -->
+      <header class="mobile-header" style="justify-content: space-between; align-items: center; padding: 1rem; position: sticky; top: 0; z-index: 50; background: hsl(var(--card)/0.85); backdrop-filter: blur(16px); border-bottom: 1px solid hsl(var(--border) / 0.5);">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 24px; height: 24px;" />
+          <span style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: hsl(var(--foreground));">Assamese Tools</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="mobile-theme-btn icon-button" title="Toggle Dark/Light Mode">
+            <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+            <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+          </button>
+          <button class="mobile-lang-btn lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+            <i data-lucide="languages" class="w-4 h-4"></i>
+            <span class="lang-text text-sm font-semibold">EN</span>
+          </button>
+        </div>
+      </header>
+      <div class="dashboard-layout" style="display: block;">
+        <div class="page-container">
+          <div class="page-header">
+            <h1 class="page-title">Privacy Policy</h1>
+            <p class="page-subtitle">Last updated: March 2024</p>
+          </div>
+
+          <div class="content-card">
+            <h2>1. Introduction</h2>
+            <p>Welcome to Assamese Tools. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we handle your data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.</p>
+            
+            <h2>2. The Data We Collect</h2>
+            <p>Our tools are designed to be mostly client-side to maximize your privacy structure. However, we may collect, use, store and transfer different kinds of data about you which we have grouped together as follows:</p>
+            <ul>
+              <li><strong>Technical Data:</strong> includes internet protocol (IP) address, your login data, browser type and version, time zone setting and location, browser plug-in types and versions, operating system and platform.</li>
+              <li><strong>Usage Data:</strong> includes information about how you use our website, tools, and services.</li>
+            </ul>
+
+            <h2>3. How We Use Your Data</h2>
+            <p>We will only use your personal data when the law allows us to. Most commonly, we will use your data in the following circumstances:</p>
+            <ul>
+              <li>To provide, operate, and maintain our website and its functionality.</li>
+              <li>To improve, personalize, and expand our website.</li>
+              <li>To understand and analyze how you use our website.</li>
+              <li>To develop new products, services, features, and functionality.</li>
+            </ul>
+
+            <h2>4. Third-Party Links</h2>
+            <p>This website may include links to third-party websites, plug-ins and applications. Clicking on those links or enabling those connections may allow third parties to collect or share data about you. We do not control these third-party websites and are not responsible for their privacy statements.</p>
+
+            <h2>5. Data Security</h2>
+            <p>We have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorised way, altered or disclosed. In addition, we limit access to your personal data to those employees, agents, contractors and other third parties who have a business need to know.</p>
+            
+            <h2>6. Contact Details</h2>
+            <p>If you have any questions about this privacy policy or our privacy practices, please contact us via the <a href="../about/" style="color: hsl(var(--primary)); text-decoration: underline;">Contact Us</a> page.</p>
+          </div>
+          <!-- Mobile Footer -->
+          <footer class="mobile-footer" style="padding: 2rem 1rem; text-align: center; border-top: 1px solid hsl(var(--border)/0.5); margin-top: 2rem;">
+            <div style="display: flex; justify-content: center; gap: 0.75rem; font-size: 0.9rem;">
+              <a href="../about/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">About & Contact</a>
+              <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+              <a href="../privacy/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="../" class="mobile-nav-item">
+      <i data-lucide="home"></i>
+      <span>Home</span>
+    </a>
+    <a href="../calendar/" class="mobile-nav-item">
+      <i data-lucide="calendar"></i>
+      <span>Calendar</span>
+    </a>
+    <a href="../translator/" class="mobile-nav-item">
+      <i data-lucide="languages"></i>
+      <span>Translator</span>
+    </a>
+    <a href="../holiday/" class="mobile-nav-item">
+      <i data-lucide="briefcase"></i>
+      <span>Holidays</span>
+    </a>
+  </nav>
+
+  <!-- External Scripts -->
+  <script src="../assets/js/script.js"></script>
+</body>
+
+</html>

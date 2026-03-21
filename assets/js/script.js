@@ -54,7 +54,7 @@ function getAssameseDateApprox(date) {
   const isLeap = (y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0));
   let curBound = boundaries[m];
   let startDay = curBound.start;
-  
+
   // Leap year adjustment for solar alignment
   if (isLeap && m === 2) {
     startDay = 15; // In March of a leap year, Chot starts earlier
@@ -70,11 +70,11 @@ function getAssameseDateApprox(date) {
     let prevM = m === 0 ? 11 : m - 1;
     asMonthIdx = boundaries[prevM].asMonth;
     let prevDays = boundaries[m].prevDays;
-    
+
     // Phagun gets an extra day in leap years which pushes the day count
-    if (isLeap && m === 2) prevDays = 30; 
-    
-    asDay = d + prevDays - startDay + 1; 
+    if (isLeap && m === 2) prevDays = 30;
+
+    asDay = d + prevDays - startDay + 1;
   }
 
   // Bhaskarabda begins in Bohag (April)
@@ -105,7 +105,7 @@ const i18n = {
   en: {
     'app.title': 'Assamese Calendar', 'app.subtitle': "",
     'app.title_pt1': 'Assamese', 'app.title_pt2': 'Calendar',
-    'nav.menu': 'MENU', 'nav.calendar': 'Calendar', 'nav.events': 'My Events', 'nav.translator': 'Assamese Translator',
+    'nav.menu': 'MENU', 'nav.calendar': 'Calendar', 'nav.events': 'My Events', 'nav.translator': 'Assamese Translator', 'nav.holiday': 'Holidays 2024',
     'events.subtitle': '',
     'btn.add_event': 'Add Event', 'btn.today': 'Today', 'btn.save': 'Save', 'btn.cancel': 'Cancel',
     'lbl.upcoming': 'Upcoming Events', 'lbl.no_events': 'No upcoming events', 'lbl.today': 'Today',
@@ -117,7 +117,7 @@ const i18n = {
   as: {
     'app.title': 'অসমীয়া কেলেণ্ডাৰ', 'app.subtitle': '',
     'app.title_pt1': 'অসমীয়া', 'app.title_pt2': 'কেলেণ্ডাৰ',
-    'nav.menu': 'MENU', 'nav.calendar': 'কেলেণ্ডাৰ', 'nav.events': 'মোৰ অনুষ্ঠানবোৰ', 'nav.translator': 'অসমীয়া অনুবাদক',
+    'nav.menu': 'MENU', 'nav.calendar': 'কেলেণ্ডাৰ', 'nav.events': 'মোৰ অনুষ্ঠানবোৰ', 'nav.translator': 'অসমীয়া অনুবাদক', 'nav.holiday': 'চৰকাৰী বন্ধ ২০২৪',
     'events.subtitle': '',
     'btn.add_event': 'নতুন অনুষ্ঠান', 'btn.today': 'আজি', 'btn.save': 'সংৰক্ষণ কৰক', 'btn.cancel': 'বাতিল',
     'lbl.upcoming': 'আগন্তুক অনুষ্ঠান', 'lbl.no_events': 'কোনো অনুষ্ঠান নাই', 'lbl.today': 'আজি',
@@ -133,8 +133,10 @@ function translatePage() {
     const key = el.getAttribute('data-i18n');
     if (i18n[state.language][key]) el.textContent = i18n[state.language][key];
   });
-  const langText = document.getElementById('lang-text');
-  if (langText) langText.textContent = state.language.toUpperCase();
+
+  // Update all elements with class 'lang-text' or id 'lang-text'
+  const langTextNodes = document.querySelectorAll('#lang-text, .lang-text');
+  langTextNodes.forEach(node => { node.textContent = state.language === 'en' ? 'EN' : 'AS'; });
 }
 
 function toggleLanguage() {
@@ -518,11 +520,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof renderEventsPageGrid === 'function') renderEventsPageGrid();
 
   // Navigation Listeners
-  const langBtn = document.getElementById('lang-toggle-btn');
-  if (langBtn) langBtn.addEventListener('click', toggleLanguage);
+  const langBtns = document.querySelectorAll('#lang-toggle-btn, .mobile-lang-btn');
+  langBtns.forEach(btn => btn.addEventListener('click', toggleLanguage));
 
-  const themeBtn = document.getElementById('theme-toggle-btn');
-  if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+  const themeBtns = document.querySelectorAll('#theme-toggle-btn, .mobile-theme-btn');
+  themeBtns.forEach(btn => btn.addEventListener('click', toggleTheme));
 
   const addBtn = document.getElementById('add-event-btn');
   if (addBtn) addBtn.addEventListener('click', () => openEventDialog(null, new Date()));

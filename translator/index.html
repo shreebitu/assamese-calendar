@@ -81,57 +81,86 @@
     <div class="app-wrapper">
         <!-- Left Navigation Sidebar -->
         <aside class="left-nav">
-            <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;"><div class="brand">
-                <div class="bg-primary/10 p-2 rounded-xl flex items-center justify-center"
-                    style="width: 2.5rem; height: 2.5rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        data-lucide="languages" aria-hidden="true" class="lucide lucide-languages w-6 h-6 text-primary">
-                        <path d="m5 8 6 6"></path>
-                        <path d="m4 14 6-6 2-3"></path>
-                        <path d="M2 5h12"></path>
-                        <path d="M7 2h1"></path>
-                        <path d="m22 22-5-10-5 10"></path>
-                        <path d="M14 18h6"></path>
-                    </svg>
+            <a href="../" style="text-decoration: none; display: block; color: inherit; outline: none;">
+                <div class="brand">
+                    <div class="bg-primary/10 p-2 rounded-xl flex items-center justify-center"
+                        style="width: 2.5rem; height: 2.5rem;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            data-lucide="languages" aria-hidden="true"
+                            class="lucide lucide-languages w-6 h-6 text-primary">
+                            <path d="m5 8 6 6"></path>
+                            <path d="m4 14 6-6 2-3"></path>
+                            <path d="M2 5h12"></path>
+                            <path d="M7 2h1"></path>
+                            <path d="m22 22-5-10-5 10"></path>
+                            <path d="M14 18h6"></path>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <span class="brand-title">Assamese</span>
+                        <span class="brand-subtitle">Translator</span>
+                    </div>
                 </div>
-                <div class="brand-text">
-                    <span class="brand-title">Assamese</span>
-                    <span class="brand-subtitle">Translator</span>
+
+                <div class="nav-menu">
+                    <a href="../" class="nav-item w-full">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="../translator/" class="nav-item active w-full">
+                        <i data-lucide="languages" class="w-5 h-5"></i>
+                        <span>Assamese Translator</span>
+                    </a>
+                    <a href="../calendar/" class="nav-item w-full">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                        <span>Calendar</span>
+                    </a>
+                    <a href="../holiday/" class="nav-item w-full">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        <span>Holidays 2024</span>
+                    </a>
                 </div>
-            </div>
 
-            <div class="nav-menu">
-                <div class="nav-label" data-i18n="nav.menu">MENU</div>
-        <a href="../" class="nav-item w-full">
-          <i data-lucide="home" class="w-5 h-5"></i>
-          <span>Home</span>
-        </a>
-                <a href="../translator/" class="nav-item active w-full">
-                    <i data-lucide="languages" class="w-5 h-5"></i>
-                    <span data-i18n="nav.translator">Assamese Translator</span>
-                </a>
-                <a href="../calendar/" class="nav-item w-full">
-                    <i data-lucide="calendar" class="w-5 h-5"></i>
-                    <span data-i18n="nav.calendar">কেলেণ্ডাৰ</span>
-                </a>
-            </div>
+                <div class="nav-secondary" style="margin-top: auto; margin-bottom: 1rem; padding: 0 0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.35rem; font-size: 0.75rem; font-weight: 500; white-space: nowrap;">
+                    <a href="../about/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">About & Contact</a>
+                    <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+                    <a href="../privacy/" style="color: hsl(var(--muted-foreground)); text-decoration: none; transition: color 0.2s;">Privacy Policy</a>
+                </div>
 
-            <div class="nav-footer">
-                <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
-                    <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
-                    <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
-                </button>
-                <button id="lang-toggle-btn" class="lang-toggle flex items-center gap-1 cursor-pointer"
-                    title="Toggle Language">
-                    <i data-lucide="languages" class="w-4 h-4"></i>
-                    <span id="lang-text" class="text-sm font-semibold">EN</span>
-                </button>
-            </div>
+                <div class="nav-footer">
+                    <button id="theme-toggle-btn" class="icon-button" title="Toggle Dark/Light Mode">
+                        <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+                        <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+                    </button>
+                    <button id="lang-toggle-btn" class="lang-toggle flex items-center gap-1 cursor-pointer"
+                        title="Toggle Language">
+                        <i data-lucide="languages" class="w-4 h-4"></i>
+                        <span id="lang-text" class="text-sm font-semibold">EN</span>
+                    </button>
+                </div>
         </aside>
 
         <!-- Main Content Scroll Area -->
-        <div class="content-scroll" style="background-color: var(--bg-secondary);">
+        <div class="content-scroll">
+          <!-- Mobile Header -->
+          <header class="mobile-header" style="justify-content: space-between; align-items: center; padding: 1rem; position: sticky; top: 0; z-index: 50; background: hsl(var(--card)/0.85); backdrop-filter: blur(16px); border-bottom: 1px solid hsl(var(--border) / 0.5);">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <img src="../assets/images/favicon.svg" alt="App Logo" style="width: 24px; height: 24px;" />
+              <span style="font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 800; color: hsl(var(--foreground));">Assamese Tools</span>
+            </div>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button class="mobile-theme-btn icon-button" title="Toggle Dark/Light Mode">
+                <i data-lucide="moon" class="w-5 h-5 theme-icon-moon"></i>
+                <i data-lucide="sun" class="w-5 h-5 theme-icon-sun hidden"></i>
+              </button>
+              <button class="mobile-lang-btn lang-toggle flex items-center gap-1 cursor-pointer" title="Toggle Language">
+                <i data-lucide="languages" class="w-4 h-4"></i>
+                <span class="lang-text text-sm font-semibold">EN</span>
+              </button>
+            </div>
+          </header>
+            <div class="dashboard-layout" style="display: block;">
             <!-- Dashboard Page Layout -->
             <main class="events-layout" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 1.5rem;">
 
@@ -318,8 +347,16 @@
                         </div>
 
                     </div>
+                    <!-- Mobile Footer -->
+                    <footer class="mobile-footer" style="padding: 2rem 1rem; text-align: center; border-top: 1px solid hsl(var(--border)/0.5); margin-top: 2rem;">
+                      <div style="display: flex; justify-content: center; gap: 0.75rem; font-size: 0.9rem;">
+                        <a href="../about/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">About & Contact</a>
+                        <span style="color: hsl(var(--border)); font-weight: 800;">||</span>
+                        <a href="../privacy/" style="color: hsl(var(--primary)); text-decoration: none; font-weight: 500;">Privacy Policy</a>
+                      </div>
+                    </footer>
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 
@@ -333,18 +370,22 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-bottom-nav">
-      <a href="../" class="mobile-nav-item">
-        <i data-lucide="home"></i>
-        <span>Home</span>
-      </a>
-      <a href="../calendar/" class="mobile-nav-item">
-        <i data-lucide="calendar"></i>
-        <span>Calendar</span>
-      </a>
-      <a href="../translator/" class="mobile-nav-item active">
-        <i data-lucide="languages"></i>
-        <span>Translator</span>
-      </a>
+        <a href="../" class="mobile-nav-item">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+        </a>
+        <a href="../calendar/" class="mobile-nav-item">
+            <i data-lucide="calendar"></i>
+            <span>Calendar</span>
+        </a>
+        <a href="../translator/" class="mobile-nav-item active">
+            <i data-lucide="languages"></i>
+            <span>Translator</span>
+        </a>
+        <a href="../holiday/" class="mobile-nav-item">
+            <i data-lucide="briefcase"></i>
+            <span>Holidays</span>
+        </a>
     </nav>
 </body>
 
