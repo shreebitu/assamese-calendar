@@ -354,6 +354,18 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    @media (max-width: 480px) {
+      .title { font-size: 1.8rem; }
+      .container { padding: 1.5rem; }
+      header { padding: 2rem 1rem 1rem; }
+      .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .theme-toggle { top: 1rem; right: 1rem; width: 40px; height: 40px; }
+      .logo-container { width: 64px; height: 64px; }
+      
+      .mobile-bottom-nav {
+        display: flex;
+      }
+    }
     @media (max-width: 640px) {
       .title { font-size: 2.5rem; }
       .container { padding: 1.5rem; }
@@ -507,7 +519,7 @@
 
     <!-- Footer Section -->
     <footer style="margin-top: 4rem; padding: 2rem 1rem; border-top: 1px solid var(--card-border); text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-      <p style="margin-bottom: 0.5rem;">&copy; 2024 Assamese Tools. All rights reserved.</p>
+      <p style="margin-bottom: 0.5rem;">&copy; 2026 Assamese Tools. All rights reserved.</p>
       <div style="display: flex; justify-content: center; gap: 0.75rem;">
         <a href="about/" style="color: var(--primary); text-decoration: none; font-weight: 500;">About & Contact</a>
         <span style="color: hsl(var(--border)); font-weight: 800;">||</span>

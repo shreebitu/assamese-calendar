@@ -104,8 +104,9 @@ function getAssameseFestivals(year) {
 const i18n = {
   en: {
     'app.title': 'Assamese Calendar', 'app.subtitle': "",
-    'app.title_pt1': 'Assamese', 'app.title_pt2': 'Calendar',
-    'nav.menu': 'MENU', 'nav.calendar': 'Calendar', 'nav.events': 'My Events', 'nav.translator': 'Assamese Translator', 'nav.holiday': 'Holidays 2024',
+    'app.title_pt1': 'Assamese', 'app.title_pt2': 'Calendar', 'app.title_pt3': 'Translator', 'app.title_pt4': 'Holidays', 'app.title_pt5': 'Tools',
+    'app.title_translator': 'Assamese Translator', 'app.title_holiday': 'Assamese Holidays', 'app.title_tools': 'Assamese Tools',
+    'nav.menu': 'MENU', 'nav.calendar': 'Calendar', 'nav.events': 'My Events', 'nav.translator': 'Assamese Translator', 'nav.holiday': 'Holidays 2026',
     'events.subtitle': '',
     'btn.add_event': 'Add Event', 'btn.today': 'Today', 'btn.save': 'Save', 'btn.cancel': 'Cancel',
     'lbl.upcoming': 'Upcoming Events', 'lbl.no_events': 'No upcoming events', 'lbl.today': 'Today',
@@ -116,8 +117,9 @@ const i18n = {
   },
   as: {
     'app.title': 'অসমীয়া কেলেণ্ডাৰ', 'app.subtitle': '',
-    'app.title_pt1': 'অসমীয়া', 'app.title_pt2': 'কেলেণ্ডাৰ',
-    'nav.menu': 'MENU', 'nav.calendar': 'কেলেণ্ডাৰ', 'nav.events': 'মোৰ অনুষ্ঠানবোৰ', 'nav.translator': 'অসমীয়া অনুবাদক', 'nav.holiday': 'চৰকাৰী বন্ধ ২০২৪',
+    'app.title_pt1': 'অসমীয়া', 'app.title_pt2': 'কেলেণ্ডাৰ', 'app.title_pt3': 'অনুবাদক', 'app.title_pt4': 'বন্ধ', 'app.title_pt5': 'সঁজুলি',
+    'app.title_translator': 'অসমীয়া অনুবাদক', 'app.title_holiday': 'অসমীয়া বন্ধ', 'app.title_tools': 'অসমীয়া সঁজুলি',
+    'nav.menu': 'MENU', 'nav.calendar': 'কেলেণ্ডাৰ', 'nav.events': 'মোৰ অনুষ্ঠানবোৰ', 'nav.translator': 'অসমীয়া অনুবাদক', 'nav.holiday': 'চৰকাৰী বন্ধ ২০২৬',
     'events.subtitle': '',
     'btn.add_event': 'নতুন অনুষ্ঠান', 'btn.today': 'আজি', 'btn.save': 'সংৰক্ষণ কৰক', 'btn.cancel': 'বাতিল',
     'lbl.upcoming': 'আগন্তুক অনুষ্ঠান', 'lbl.no_events': 'কোনো অনুষ্ঠান নাই', 'lbl.today': 'আজি',
