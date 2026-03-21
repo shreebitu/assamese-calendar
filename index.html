@@ -381,6 +381,45 @@
           <h1 class="title">Assamese <span class="highlight" data-i18n="app.title_pt5">Tools</span></h1>
         </header>
 
+        <!-- Today Info Card -->
+        <div class="today-card fade-in zoom-in group" style="margin-bottom: 1.5rem; text-align: left;">
+          <div class="today-card-bg"></div>
+          <div class="today-card-content">
+            <div class="flex items-center gap-4 z-10 w-full">
+              <div class="today-card-icon group-hover-scale" id="today-day-number">
+                --
+              </div>
+              <div class="flex-1">
+                <h2 class="today-card-title text-foreground" id="today-full-date">...</h2>
+                <div class="flex items-center gap-2 mt-1">
+                  <i data-lucide="calendar-days" class="w-4 h-4 text-primary opacity-[0.8]"></i>
+                  <p class="today-card-subtitle" id="today-assamese-date">...</p>
+                </div>
+              </div>
+            </div>
+            <div class="today-card-badge shadow-sm text-center" id="today-weekday"
+              style="font-size: 20px; font-weight: 700; padding: 0.25rem 1rem;">...</div>
+          </div>
+        </div>
+
+        <!-- Separate Today Festival Card -->
+        <div class="card p-5 fade-in zoom-in group" id="today-festival-wrapper"
+          style="display: none; border: 1px solid rgba(245, 158, 11, 0.3); background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.01) 100%); margin-bottom: 2.5rem; box-shadow: 0 4px 20px rgba(245, 158, 11, 0.06); text-align: left;">
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+            <div class="flex items-center justify-center flex-shrink-0"
+              style="background: rgba(245, 158, 11, 0.12); padding: 0.75rem; border-radius: 12px; box-shadow: inset 0 0 10px rgba(245, 158, 11, 0.1);">
+              <i data-lucide="sparkles" class="w-6 h-6" style="color: #f59e0b;"></i>
+            </div>
+            <div class="flex flex-col text-center sm:text-left pt-1">
+              <span
+                style="font-size: 0.95rem; font-weight: 800; color: #f59e0b; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;">আজিৰ
+                বিশেষ দিন</span>
+              <span id="Sig"
+                style="font-family: 'Tiro Bangla', serif; font-size: 1.4rem; color: var(--foreground); font-weight: 800; line-height: 1.3;"></span>
+            </div>
+          </div>
+        </div>
+
         <div class="cards-grid">
           <!-- Calendar Card -->
           <a href="calendar/" class="card" id="card-calendar">
@@ -516,7 +555,15 @@
 
   <!-- External Scripts -->
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/today-feature.js"></script>
   <script>
+    // Show festival wrapper if text is populated
+    const sigElement = document.getElementById('Sig');
+    const festWrapper = document.getElementById('today-festival-wrapper');
+    if (sigElement && sigElement.innerHTML.trim() !== "") {
+      festWrapper.style.display = 'block';
+    }
+
     // Mouse move effect for cards
     document.querySelectorAll('.card').forEach(card => {
       card.addEventListener('mousemove', e => {
